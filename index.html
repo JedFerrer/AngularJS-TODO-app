@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="todo-app">
+
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<link rel="stylesheet" href='css/style.css'/>
+		<!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body ng-controller="todo-ctrl">
+		<div class="header text-center">
+			<h1>TODO APP v.2 (Project 4)</h1>
+			<h5>Using: AngularJS Framework | Twitter Bootsrap 3 | HTML5 Session Storage | #HTML #CSS #JS</h5>
+		</div>
+
+		<div class="todo-container">
+			<div class="container information">
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div id="todoapp" class="col-md-6">
+						<div class="input-container">
+							<header>
+								<h1>AngularJS ToDo App</h1>
+
+								<div class="list-group-item">
+									<form ng-submit="addTodo()">
+										<input id="new-todo" class="form-control input-lg" ng-model="todoInput" type="text" placeholder="What needs to be done?" autocomplete="off">
+									</form>
+								</div>
+								<div class="menu-container list-group-item" ng-show="toggle">
+								    <button class="clear-all btn btn-success" id="clear" ng-click ="clearAll()" style="float:right;">Clear All</button>
+								    <div class="clear"></div>
+								</div> 
+
+							</header>
+						</div>
+
+						<div id="main">
+							<ul id="todo-list">
+								<div class="todo-content view list-group-item" ng-repeat="todo in todoList track by $index">
+						            <input class="check-toggle" type="checkbox" ng-change="itemsLeftCount()" ng-model="todo.done">
+						            <p class="todo-desc done-{{todo.done}}">{{todo.todoText}}</p>
+						            <a class="destroy" ng-click="removeTodo(todo)"></a>
+						            <div class="clear"></div>
+						        </div>
+							</ul>
+						</div>
+
+						<footer class="count-info"> 
+							<div id="todo-count" style="float:left;">
+								<span ng-show="toggle">
+									<b class="total-items">
+										{{itemsLeftCount()}}
+									</b> items left
+								</span>
+							</div>
+							<button class="clear-completed btn btn-default" id="clear" ng-show="toggleClearCompleted" ng-click="clearCompleted()" style="float:right;">Clear Completed<p></p></button>	
+							<div class="clear"></div>
+						</footer>
+
+						<div class="footer-container">
+							<p class="footer-text text-center">&copy; 2015 Copyright Todo App | Powered by Mayon Volcano Software Ltd.</p>
+
+							<p class="text-center">Created by: Jedidiah L. Ferrer</p>
+						</div>
+					</div>
+
+					<div class="col-md-3"></div>
+					
+				</div>			
+			</div>
+		</div>
+
+
+<!-- 		<div ng-app="myApp" ng-controller="myCtrl">
+			{{ firstName + " " + lastName }}
+		</div>
+ -->
+		
+
+	<!-- 	<div ng-app="">
+			First Name: <input type="text" ng-model="firstName"><br>
+			Middle Name: <input type="text" ng-model="middleName"><br>
+			Last Name: <input type="text" ng-model="lastName"><br>
+			<br>
+			<p>Full name: <span ng-bind="firstName + ' ' + middleName + ' ' + lastName"></span></p>
+		</div> -->
+		<!-- <h2>Validation Example</h2>
+
+		<form ng-app="formModule" ng-controller="validateCtrl" name="myForm" novalidate>
+
+		<p>Username:<br>
+		  <input type="text" name="user" ng-model="user" required>
+		  <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+		  <span ng-show="myForm.user.$error.required">Username is required.</span>
+		  </span>
+		</p>
+
+		<p>Email:<br>
+		  <input type="email" name="email" ng-model="email" required>
+		  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+		  <span ng-show="myForm.email.$error.required">Email is required.</span>
+		  <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+		  </span>
+		</p>
+
+		<p>
+		  <input type="submit"
+		  ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+		  myForm.email.$dirty && myForm.email.$invalid">
+		</p>
+
+		</form> -->
+
+
+<!-- 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+		<script src= "lib/controller/index.js"></script>
+	</body>
+</html>
